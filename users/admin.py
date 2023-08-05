@@ -7,7 +7,7 @@ from django.contrib.auth.admin import UserAdmin
 
 
 
-class UserAdminConfig(UserAdmin):
+class UserAdminConfig(admin.ModelAdmin):
     exclude = ['last_name', 'date_joined', 'first_name']
     search_fields = ('email', 'user_name')
     list_filter = ('email', 'user_name', 'is_active', 'is_staff')
@@ -15,14 +15,7 @@ class UserAdminConfig(UserAdmin):
     list_display = ('email', 'user_name','is_active', 'is_staff')
     
     
-    
-fieldsets = (
-    (None, {"fields": ('email', 'user_name'),}),
-    ('Permissions', {"fields": ('is_staff', 'is_active'),}),
-)
 
-    
-    
     
     
     
