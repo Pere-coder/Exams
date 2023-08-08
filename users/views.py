@@ -12,9 +12,9 @@ from .serializers import CustomUserSerializer
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def sign_up(request):
-    serilaizer = CustomUserSerializer(data=request.data)
-    if serilaizer.is_valid():
-        serilaizer.save(password=make_password(serilaizer.validate_data['password']))
-        return Response(serilaizer.data, status=status.HTTP_201_CREATED)
+    serializer = CustomUserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(password=make_password(serializer.validated_data['password']))
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
